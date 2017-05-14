@@ -15,8 +15,8 @@ for (i in 1:50) {
   cars<-na.omit(cars)
   cars.all <- rbind(cars.all,cars)
 }
-names(cars.all)[1:7]<-c("İlan Başlığı","Yıl","Kilometre","Renk","Fiyat","Tarih","İl / İlçe")
 
+names(cars.all)[2:8]<-c("İlan Başlığı","Yıl","Kilometre","Renk","Fiyat","Tarih","İl / İlçe")
 cars.all[,c(7)]<-gsub("([A-Z])", " \\1", cars.all[,c(7)])
 cars.all[,3]<-gsub("\\.", "", cars.all[,3])
 cars.all[,3] <- as.numeric(cars.all[,3])
@@ -24,6 +24,7 @@ cars.all[,3] <- as.numeric(cars.all[,3])
 cars.all[,5]<-gsub("\\.", "", cars.all[,5])
 cars.all[,5]<-gsub(" TL", "", cars.all[,5])
 cars.all[,5] <- as.numeric(cars.all[,5])
+cars.all[,1] <- as.character(cars.all[,1])
 
 
 cars.all$shortname <- stri_sub(cars.all[,c(1)],1,20)
