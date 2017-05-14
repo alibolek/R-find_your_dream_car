@@ -17,7 +17,7 @@ server <- function(input, output) {
       LONG=target_pos$lon
       ZOOM=5
       
-      leaflet() %>%
+      leaflet() %>% 
         setView(lng=LONG, lat=LAT, zoom=ZOOM ) %>%
         addTiles() %>% addMarkers(lng=32.85974, lat=39.93336, popup=paste("slm",'<br><a href="http://www.google.com">Web Site</a>'))
       
@@ -36,7 +36,7 @@ ui <- fluidPage(
   
   
   absolutePanel(top=80, left=70,selectInput(selected = 1,"shortname", "Cars",
-                                            cars.all$shortname))
+              cars.all$shortname))
   
 )
 
