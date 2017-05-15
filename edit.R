@@ -7,4 +7,3 @@ cars.all[,5] <- as.numeric(cars.all[,5])
 cars.all[,2] <- as.character(cars.all[,2])
 cars.all[,9] <- as.character(cars.all[,9])
 cars.all[,10] <- as.character(cars.all[,10])
-
