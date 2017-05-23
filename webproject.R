@@ -29,9 +29,9 @@ server <- function(input, output) {
       cars.all <- cars.all[grep(input$cars, cars.all$`İlan Başlığı`,ignore.case = TRUE), ]
       cars.all <- cars.all[cars.all$lon <= (LONG+2) & cars.all$lon >= (LONG-2),]
       cars.all <- cars.all[cars.all$lat <= (LAT+2) & cars.all$lat >= (LAT-2),]
-      cars.all <- cars.all[cars.all$Fiyat <= input$inputId ,]
-      cars.all <- cars.all[cars.all$Yıl <= input$tarih ,]
-      cars.all <- cars.all[cars.all$Kilometre <= input$km ,]
+      cars.all <- cars.all[cars.all$Fiyat >= input$inputId[1] & cars.all$Fiyat <= input$inputId[2],]
+      cars.all <- cars.all[cars.all$Yıl >= input$tarih[1] & cars.all$Yıl <= input$tarih[2],]
+      cars.all <- cars.all[cars.all$Kilometre >= input$km[1] & cars.all$Kilometre <= input$km[2],]
       leaflet() %>% 
         setView(lng=LONG, lat=LAT, zoom=ZOOM ) %>%
         addTiles() %>% addMarkers(lng=cars.all$lon, lat=cars.all$lat, popup=paste(cars.all$shortname,'<br><a href=','https://www.arabam.com', cars.all$links ,'>Go WebSite</a>',sep=""),clusterOptions = markerClusterOptions())
